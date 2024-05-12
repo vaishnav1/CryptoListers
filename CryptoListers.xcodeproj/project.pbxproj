@@ -15,6 +15,9 @@
 		FE0F6D3A2BEF67060055A851 /* CryptoListersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D392BEF67060055A851 /* CryptoListersUITests.swift */; };
 		FE0F6D3C2BEF67060055A851 /* CryptoListersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D3B2BEF67060055A851 /* CryptoListersUITestsLaunchTests.swift */; };
 		FE0F6D492BEF6FD80055A851 /* CryptoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D482BEF6FD80055A851 /* CryptoListViewController.swift */; };
+		FE0F6D4D2BEF8B8A0055A851 /* DataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */; };
+		FE0F6D542BF0B2F10055A851 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D532BF0B2F10055A851 /* DetailsTableViewCell.swift */; };
+		FE0F6D562BF0F50E0055A851 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D552BF0F50E0055A851 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		FE0F6D392BEF67060055A851 /* CryptoListersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListersUITests.swift; sourceTree = "<group>"; };
 		FE0F6D3B2BEF67060055A851 /* CryptoListersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE0F6D482BEF6FD80055A851 /* CryptoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListViewController.swift; sourceTree = "<group>"; };
+		FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponseModel.swift; sourceTree = "<group>"; };
+		FE0F6D532BF0B2F10055A851 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		FE0F6D552BF0F50E0055A851 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 			children = (
 				FE0F6D182BEF67040055A851 /* AppDelegate.swift */,
 				FE0F6D1A2BEF67040055A851 /* SceneDelegate.swift */,
+				FE0F6D572BF1069E0055A851 /* Service */,
+				FE0F6D4E2BEFAC990055A851 /* Helpers */,
+				FE0F6D4B2BEF8B710055A851 /* ResponseModel */,
 				FE0F6D4A2BEF72D50055A851 /* Views */,
 				FE0F6D212BEF67060055A851 /* Assets.xcassets */,
 				FE0F6D232BEF67060055A851 /* LaunchScreen.storyboard */,
@@ -128,8 +137,40 @@
 			isa = PBXGroup;
 			children = (
 				FE0F6D482BEF6FD80055A851 /* CryptoListViewController.swift */,
+				FE0F6D522BF0A3510055A851 /* TableViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FE0F6D4B2BEF8B710055A851 /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		FE0F6D4E2BEFAC990055A851 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F6D552BF0F50E0055A851 /* AppConstants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FE0F6D522BF0A3510055A851 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F6D532BF0B2F10055A851 /* DetailsTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		FE0F6D572BF1069E0055A851 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0F6D4D2BEF8B8A0055A851 /* DataResponseModel.swift in Sources */,
+				FE0F6D562BF0F50E0055A851 /* AppConstants.swift in Sources */,
+				FE0F6D542BF0B2F10055A851 /* DetailsTableViewCell.swift in Sources */,
 				FE0F6D192BEF67040055A851 /* AppDelegate.swift in Sources */,
 				FE0F6D492BEF6FD80055A851 /* CryptoListViewController.swift in Sources */,
 				FE0F6D1B2BEF67040055A851 /* SceneDelegate.swift in Sources */,

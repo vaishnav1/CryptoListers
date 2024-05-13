@@ -22,4 +22,5 @@ A small and clean iOS app for reading list to Cryptos sourced from public mockab
 
 #### ToDo
 ❇️ Filter sources based on active, inactive and currency type eg: token, coin
+❇️ Simple Alert controller for alert
 ❇️ Improve test coverage

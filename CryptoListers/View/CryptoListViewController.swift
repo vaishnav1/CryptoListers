@@ -117,14 +117,15 @@ extension CryptoListViewController: UISearchBarDelegate {
         if let filterData = filteredModel, filterData.count > 0 {
             dataModel = filteredModel
         } else {
-            
+            dataModel = nil
+            print("No results to display")
         }
         listTableView.reloadData()
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        makeAPICall()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -133,7 +134,9 @@ extension CryptoListViewController: UISearchBarDelegate {
         if let filterData = filteredModel, filterData.count > 0 {
             dataModel = filteredModel
         } else {
-            
+            dataModel = nil
+            print("No results to display")
         }
+        listTableView.reloadData()
     }
 }

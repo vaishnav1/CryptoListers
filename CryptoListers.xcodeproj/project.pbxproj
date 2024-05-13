@@ -21,6 +21,9 @@
 		FE0F6D592BF1CC200055A851 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D582BF1CC200055A851 /* AppColors.swift */; };
 		FE0F6D5B2BF1E5A00055A851 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */; };
 		FE0F6D5D2BF1E7A60055A851 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5C2BF1E7A60055A851 /* ErrorMessage.swift */; };
+		FE0F6D602BF1EE950055A851 /* CryptoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5F2BF1EE950055A851 /* CryptoListViewModel.swift */; };
+		FE0F6D622BF1F0B20055A851 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D612BF1F0B20055A851 /* EndPoints.swift */; };
+		FE0F6D642BF1F1490055A851 /* Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE0F6D632BF1F1490055A851 /* Key.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		FE0F6D582BF1CC200055A851 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FE0F6D5C2BF1E7A60055A851 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		FE0F6D5F2BF1EE950055A851 /* CryptoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListViewModel.swift; sourceTree = "<group>"; };
+		FE0F6D612BF1F0B20055A851 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		FE0F6D632BF1F1490055A851 /* Key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Key.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +119,13 @@
 				FE0F6D1A2BEF67040055A851 /* SceneDelegate.swift */,
 				FE0F6D572BF1069E0055A851 /* Service */,
 				FE0F6D4E2BEFAC990055A851 /* Helpers */,
-				FE0F6D4B2BEF8B710055A851 /* ResponseModel */,
-				FE0F6D4A2BEF72D50055A851 /* Views */,
+				FE0F6D4B2BEF8B710055A851 /* Model */,
+				FE0F6D4A2BEF72D50055A851 /* View */,
+				FE0F6D5E2BF1EE5E0055A851 /* ViewModel */,
 				FE0F6D212BEF67060055A851 /* Assets.xcassets */,
 				FE0F6D232BEF67060055A851 /* LaunchScreen.storyboard */,
 				FE0F6D262BEF67060055A851 /* Info.plist */,
+				FE0F6D632BF1F1490055A851 /* Key.plist */,
 			);
 			path = CryptoListers;
 			sourceTree = "<group>";
@@ -139,21 +147,21 @@
 			path = CryptoListersUITests;
 			sourceTree = "<group>";
 		};
-		FE0F6D4A2BEF72D50055A851 /* Views */ = {
+		FE0F6D4A2BEF72D50055A851 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FE0F6D482BEF6FD80055A851 /* CryptoListViewController.swift */,
 				FE0F6D522BF0A3510055A851 /* TableViewCell */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
-		FE0F6D4B2BEF8B710055A851 /* ResponseModel */ = {
+		FE0F6D4B2BEF8B710055A851 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */,
 			);
-			path = ResponseModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FE0F6D4E2BEFAC990055A851 /* Helpers */ = {
@@ -178,8 +186,17 @@
 			isa = PBXGroup;
 			children = (
 				FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */,
+				FE0F6D612BF1F0B20055A851 /* EndPoints.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		FE0F6D5E2BF1EE5E0055A851 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F6D5F2BF1EE950055A851 /* CryptoListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +305,7 @@
 			files = (
 				FE0F6D222BEF67060055A851 /* Assets.xcassets in Resources */,
 				FE0F6D252BEF67060055A851 /* Base in Resources */,
+				FE0F6D642BF1F1490055A851 /* Key.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,10 +335,12 @@
 				FE0F6D562BF0F50E0055A851 /* AppConstants.swift in Sources */,
 				FE0F6D542BF0B2F10055A851 /* DetailsTableViewCell.swift in Sources */,
 				FE0F6D192BEF67040055A851 /* AppDelegate.swift in Sources */,
+				FE0F6D602BF1EE950055A851 /* CryptoListViewModel.swift in Sources */,
 				FE0F6D5D2BF1E7A60055A851 /* ErrorMessage.swift in Sources */,
 				FE0F6D592BF1CC200055A851 /* AppColors.swift in Sources */,
 				FE0F6D492BEF6FD80055A851 /* CryptoListViewController.swift in Sources */,
 				FE0F6D1B2BEF67040055A851 /* SceneDelegate.swift in Sources */,
+				FE0F6D622BF1F0B20055A851 /* EndPoints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,22 +11,24 @@ class NetworkService {
     
     static let sharedInstance = NetworkService()
     
-    let apiToken = "37656be98b8f42ae8348e4da3ee3193f"
-    let baseUrl = "https://"
-    let endPointUrl = ".api.mockbin.io/"
-    
     private init() { }
     
     func getCryptoData(completion: @escaping (Result<[DataResponseModel], ErrorMessage>) -> Void) {
-        let endpoint = baseUrl + apiToken + endPointUrl
         
-        guard let url = URL(string: endpoint) else {
-            completion(.failure(.unableToComplete))
-            return
+        performRequest(endpoint: .getData) { result in
+            switch result {
+            case .success(let apiResponse):
+                completion(.success(apiResponse))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
-        
-        let _ = URLSession.shared.dataTask(with: url) { data, response, error in
-            
+    }
+    
+    // MARK: - Private helper method
+    
+    private func performRequest(endpoint: EndPoints, completion: @escaping(Result<[DataResponseModel], ErrorMessage>) -> Void) {
+        URLSession.shared.dataTask(with: endpoint.url) { data, response, error in
             if let _ = error {
                 completion(.failure(.unableToComplete))
                 return
@@ -43,9 +45,8 @@ class NetworkService {
             }
             
             do {
-                let decoder = JSONDecoder()
-                let responseData = try decoder.decode([DataResponseModel].self, from: data)
-                completion(.success(responseData))
+                let apiResponse = try JSONDecoder().decode([DataResponseModel].self, from: data)
+                completion(.success(apiResponse))
             } catch {
                 completion(.failure(.invalidData))
             }

@@ -111,32 +111,17 @@ extension CryptoListViewController: UITableViewDataSource {
 
 extension CryptoListViewController: UISearchBarDelegate {
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        guard let searchText = searchBar.text else { return false }
-        let filteredModel = dataModel?.filter { $0.name == searchText }
-        if let filterData = filteredModel, filterData.count > 0 {
-            dataModel = filteredModel
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            makeAPICall()
         } else {
-            dataModel = nil
-            print("No results to display")
+            dataModel = dataModel?.filter({ $0.name?.localizedCaseInsensitiveContains(searchText) ?? false })
+            listTableView.reloadData()
         }
-        listTableView.reloadData()
-        return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         makeAPICall()
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        let filteredModel = dataModel?.filter { $0.name == searchText }
-        if let filterData = filteredModel, filterData.count > 0 {
-            dataModel = filteredModel
-        } else {
-            dataModel = nil
-            print("No results to display")
-        }
-        listTableView.reloadData()
-    }
 }

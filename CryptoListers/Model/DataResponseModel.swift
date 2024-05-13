@@ -8,6 +8,7 @@
 import Foundation
 
 struct DataResponseModel: Codable {
+    
     var name: String?
     var symbol: String?
     var isNew: Bool = false

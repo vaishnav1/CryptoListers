@@ -9,6 +9,8 @@ import UIKit
 
 class DetailsTableViewCell: UITableViewCell {
     
+    // MARK: - Cell ReuseId
+    
     static var reuseId: String {
         String(describing: self)
     }

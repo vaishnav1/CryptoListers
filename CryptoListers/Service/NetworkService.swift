@@ -13,6 +13,8 @@ class NetworkService {
     
     private init() { }
     
+    // MARK: - Network Calls
+    
     func getCryptoData(completion: @escaping (Result<[DataResponseModel], ErrorMessage>) -> Void) {
         
         performRequest(endpoint: .getData) { result in

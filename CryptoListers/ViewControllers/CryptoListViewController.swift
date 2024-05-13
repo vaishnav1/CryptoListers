@@ -9,15 +9,33 @@ import UIKit
 
 class CryptoListViewController: UIViewController {
     
-    let listTableView = UITableView()
+    // MARK: - UI Elements
     
-    // Move this to VM
+    let listTableView = UITableView()
+    let spinner = UIActivityIndicatorView(style: .large)
+    
+    // MARK: - Properties
+    
     var dataModel: [DataResponseModel]?
-
+        
+    // MARK: - Initializer
+    
+    init(dataModel: [DataResponseModel]? = nil) {
+        self.dataModel = dataModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - VC Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setupView()
+        setupTheme()
         setSearchBarController()
         setupTableView()
         makeAPICall()
@@ -25,7 +43,7 @@ class CryptoListViewController: UIViewController {
     
     // MARK: - Setup UI Methods
     
-    private func setupView() {
+    private func setupTheme() {
         view.backgroundColor = AppColors.themePurple
     }
     
@@ -33,6 +51,7 @@ class CryptoListViewController: UIViewController {
         view.addSubview(listTableView)
         listTableView.register(DetailsTableViewCell.self, forCellReuseIdentifier: DetailsTableViewCell.reuseId)
         listTableView.dataSource = self
+        listTableView.delegate = self
         listTableView.rowHeight = UITableView.automaticDimension
         listTableView.layer.cornerRadius = 12
         listTableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -67,9 +86,20 @@ class CryptoListViewController: UIViewController {
         self.view.addSubview(navBar)
     }
     
+    private func showLoader() {
+        spinner.startAnimating()
+        listTableView.backgroundView = spinner
+    }
+    
+    private func hideLoader() {
+        spinner.stopAnimating()
+        listTableView.backgroundView = nil
+    }
+    
     // MARK: - Network Call
     
     private func makeAPICall() {
+        showLoader()
         NetworkService.sharedInstance.getCryptoData { [weak self] result in
             guard let self else { return }
             switch result {
@@ -78,13 +108,16 @@ class CryptoListViewController: UIViewController {
                 reloadTableViewMainThread()
             case .failure(let failure):
                 print(failure.rawValue)
+                hideLoader()
             }
         }
     }
     
     private func reloadTableViewMainThread() {
         DispatchQueue.main.async { [weak self] in
-            self?.listTableView.reloadData()
+            guard let self else { return }
+            hideLoader()
+            self.listTableView.reloadData()
         }
     }
 
@@ -92,7 +125,7 @@ class CryptoListViewController: UIViewController {
 
 // MARK: - UITableViewDataSource extension
 
-extension CryptoListViewController: UITableViewDataSource {
+extension CryptoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let dataModel else { return 0 }
@@ -105,6 +138,12 @@ extension CryptoListViewController: UITableViewDataSource {
         cell.configure(with: dataModel[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let animator = TableViewAnimator(animation: TableAnimationFactory.makeFadeAnimation(duration: 0.8, delayFactor: 0.03))
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+    }
+    
 }
 
 // MARK: - UISearchBarDelegate delegate extension

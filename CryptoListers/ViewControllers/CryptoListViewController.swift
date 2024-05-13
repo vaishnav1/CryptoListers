@@ -132,7 +132,7 @@ extension CryptoListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let animator = TableViewAnimator(animation: TableAnimationFactory.makeFadeAnimation(duration: 0.8, delayFactor: 0.03))
+        let animator = TableViewAnimator(animation: TableAnimationFactory.makeFadeAnimation(duration: 0.2, delayFactor: 0.01))
         animator.animate(cell: cell, at: indexPath, in: tableView)
     }
     

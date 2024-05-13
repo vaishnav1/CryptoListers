@@ -7,16 +7,17 @@
 
 import Foundation
 
-struct AppConstants {
+enum AppConstants: String {
     
     // MARK: - Image Constants
     
-    static let imageCryptoCoinInActive = "cryptoCoinActive"
-    static let imageCryptoCoinActive = "cryptoCoinActive"
-    static let imageNewBadge = "newBadge"
-    static let imageToken = "token"
+    case imageCryptoCoinInActive = "cryptoCoinInActive"
+    case imageCryptoCoinActive = "cryptoCoinActive"
+    case imageNewBadge = "newBadge"
+    case imageToken = "token"
     
     // MARK: - Navigation Title Constants
     
-    static let navigationTitleCoin = "Coin"
+    case navigationTitleCoin = "Coin"
+    
 }

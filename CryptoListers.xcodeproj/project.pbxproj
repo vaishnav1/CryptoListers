@@ -18,6 +18,9 @@
 		FE0F6D4D2BEF8B8A0055A851 /* DataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */; };
 		FE0F6D542BF0B2F10055A851 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D532BF0B2F10055A851 /* DetailsTableViewCell.swift */; };
 		FE0F6D562BF0F50E0055A851 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D552BF0F50E0055A851 /* AppConstants.swift */; };
+		FE0F6D592BF1CC200055A851 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D582BF1CC200055A851 /* AppColors.swift */; };
+		FE0F6D5B2BF1E5A00055A851 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */; };
+		FE0F6D5D2BF1E7A60055A851 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5C2BF1E7A60055A851 /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponseModel.swift; sourceTree = "<group>"; };
 		FE0F6D532BF0B2F10055A851 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FE0F6D552BF0F50E0055A851 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		FE0F6D582BF1CC200055A851 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FE0F6D5C2BF1E7A60055A851 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				FE0F6D552BF0F50E0055A851 /* AppConstants.swift */,
+				FE0F6D582BF1CC200055A851 /* AppColors.swift */,
+				FE0F6D5C2BF1E7A60055A851 /* ErrorMessage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 		FE0F6D572BF1069E0055A851 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -303,10 +312,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0F6D5B2BF1E5A00055A851 /* NetworkService.swift in Sources */,
 				FE0F6D4D2BEF8B8A0055A851 /* DataResponseModel.swift in Sources */,
 				FE0F6D562BF0F50E0055A851 /* AppConstants.swift in Sources */,
 				FE0F6D542BF0B2F10055A851 /* DetailsTableViewCell.swift in Sources */,
 				FE0F6D192BEF67040055A851 /* AppDelegate.swift in Sources */,
+				FE0F6D5D2BF1E7A60055A851 /* ErrorMessage.swift in Sources */,
+				FE0F6D592BF1CC200055A851 /* AppColors.swift in Sources */,
 				FE0F6D492BEF6FD80055A851 /* CryptoListViewController.swift in Sources */,
 				FE0F6D1B2BEF67040055A851 /* SceneDelegate.swift in Sources */,
 			);

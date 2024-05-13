@@ -94,7 +94,7 @@ class DetailsTableViewCell: UITableViewCell {
         titleLabel.text = details.name
         subtitleLabel.text = details.symbol
         newImageView.isHidden = !details.isNew
-        newImageView.image = UIImage(named: AppConstants.imageNewBadge)
+        newImageView.image = UIImage(named: AppConstants.imageNewBadge.rawValue)
         setImage(details)
     }
     
@@ -102,14 +102,14 @@ class DetailsTableViewCell: UITableViewCell {
         switch details.type {
         case .coin:
             if details.isActive {
-                coinImageView.image = UIImage(named: AppConstants.imageCryptoCoinActive)
+                coinImageView.image = UIImage(named: AppConstants.imageCryptoCoinActive.rawValue)
             } else {
-                coinImageView.image = UIImage(named: AppConstants.imageCryptoCoinInActive)
+                coinImageView.image = UIImage(named: AppConstants.imageCryptoCoinInActive.rawValue)
             }
         case .token:
-            coinImageView.image = UIImage(named: AppConstants.imageToken)
+            coinImageView.image = UIImage(named: AppConstants.imageToken.rawValue)
         case .none:
-            coinImageView.image = UIImage(named: AppConstants.imageToken)
+            coinImageView.image = UIImage(named: AppConstants.imageToken.rawValue)
         }
     }
 

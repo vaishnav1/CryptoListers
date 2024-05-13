@@ -20,8 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ = CryptoListViewController()
         if let windowScene = scene as? UIWindowScene {
             self.window = UIWindow(windowScene: windowScene)
-            self.window?.rootViewController = CryptoListViewController()
+            let navigationController = UINavigationController()
+            let cryptoVC = CryptoListViewController()
+            navigationController.viewControllers = [cryptoVC]
+            self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
+            UINavigationBar.appearance().tintColor = .systemGreen
         }
     }
 

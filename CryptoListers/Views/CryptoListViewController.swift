@@ -10,29 +10,23 @@ import UIKit
 class CryptoListViewController: UIViewController {
     
     let listTableView = UITableView()
-    let searchBar = UISearchController()
-    var navBar = UINavigationBar()
     
     // Move this to VM
     var dataModel: [DataResponseModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setNavigationBar()
+        setNavigationBar()
         setupView()
         setSearchBarController()
         setupTableView()
         makeAPICall()
     }
     
-    override func viewWillLayoutSubviews() {
-        setNavigationBar()
-    }
-    
     // MARK: - Setup UI Methods
     
     private func setupView() {
-        view.backgroundColor = UIColor(red: 55/255, green: 0/255, blue: 175/255, alpha: 1)
+        view.backgroundColor = AppColors.themePurple
     }
     
     private func setupTableView() {
@@ -41,6 +35,7 @@ class CryptoListViewController: UIViewController {
         listTableView.dataSource = self
         listTableView.rowHeight = UITableView.automaticDimension
         listTableView.layer.cornerRadius = 12
+        listTableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         listTableView.translatesAutoresizingMaskIntoConstraints = false
         listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         listTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -51,41 +46,48 @@ class CryptoListViewController: UIViewController {
     private func setSearchBarController() {
         let searchController = UISearchController()
         searchController.searchBar.delegate = self
+        searchController.searchBar.searchBarStyle = .prominent
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.layer.cornerRadius = 12
+        searchController.searchBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        searchController.searchBar.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.sizeToFit()
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     private func setNavigationBar() {
+        var navBar = UINavigationBar()
         let width = self.view.frame.width
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height: 44))
-        let navigationItem = UINavigationItem(title: AppConstants.navigationTitleCoin)
-        self.navigationController?.navigationBar.tintColor = .systemBackground
+        self.title = AppConstants.navigationTitleCoin.rawValue
+        navBar.barTintColor = .white
+        navBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.view.addSubview(navBar)
     }
     
+    // MARK: - Network Call
+    
     private func makeAPICall() {
-        let stringUrl = "https://37656be98b8f42ae8348e4da3ee3193f.api.mockbin.io/"
-        guard let url = URL(string: stringUrl) else { return }
-        let urlRequest = URLRequest(url: url)
-        URLSession.shared.dataTask(with: urlRequest) { Data, ResponseData, Error in
-            let jsonDecoder = JSONDecoder()
-            do {
-                if let safeData = Data {
-                    let decodedData = try jsonDecoder.decode([DataResponseModel].self, from: safeData)
-                    self.dataModel = decodedData
-                    print(decodedData)
-                }
-                DispatchQueue.main.async {
-                    self.listTableView.reloadData()
-                }
+        NetworkService.sharedInstance.getCryptoData { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let successData):
+                self.dataModel = successData
+                reloadTableViewMainThread()
+            case .failure(let failure):
+                print(failure.rawValue)
             }
-            catch {
-                print(Error ?? "Error reading data")
-            }
-        }.resume()
+        }
     }
     
+    private func reloadTableViewMainThread() {
+        DispatchQueue.main.async { [weak self] in
+            self?.listTableView.reloadData()
+        }
+    }
+
 }
 
 // MARK: - UITableViewDataSource extension
@@ -108,18 +110,30 @@ extension CryptoListViewController: UITableViewDataSource {
 // MARK: - UISearchBarDelegate delegate extension
 
 extension CryptoListViewController: UISearchBarDelegate {
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        guard let searchText = searchBar.text else { return false }
+        let filteredModel = dataModel?.filter { $0.name == searchText }
+        if let filterData = filteredModel, filterData.count > 0 {
+            dataModel = filteredModel
+        } else {
+            
+        }
+        listTableView.reloadData()
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-//        NewsService.shared.search(for: searchText) { result in
-//            switch result {
-//            case .success(let articles):
-//                self.articles = articles
-//                DispatchQueue.main.async {
-//                    self.applySnapshot()
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        let filteredModel = dataModel?.filter { $0.name == searchText }
+        if let filterData = filteredModel, filterData.count > 0 {
+            dataModel = filteredModel
+        } else {
+            
+        }
     }
 }

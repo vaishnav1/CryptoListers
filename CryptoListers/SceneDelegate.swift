@@ -17,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        _ = CryptoListViewController()
         if let windowScene = scene as? UIWindowScene {
             self.window = UIWindow(windowScene: windowScene)
             let navigationController = UINavigationController()
@@ -25,7 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navigationController.viewControllers = [cryptoVC]
             self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
-            UINavigationBar.appearance().tintColor = .systemGreen
         }
     }
 

@@ -17,25 +17,13 @@ class CryptoListViewController: UIViewController {
     // MARK: - Properties
     
     var dataModel: [DataResponseModel]?
-        
-    // MARK: - Initializer
-    
-    init(dataModel: [DataResponseModel]? = nil) {
-        self.dataModel = dataModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: - VC Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setupTheme()
+        setupView()
         setSearchBarController()
         setupTableView()
         makeAPICall()
@@ -43,18 +31,23 @@ class CryptoListViewController: UIViewController {
     
     // MARK: - Setup UI Methods
     
-    private func setupTheme() {
+    private func setupView() {
         view.backgroundColor = AppColors.themePurple
+        self.title = AppConstants.navigationTitleCoin.rawValue
     }
     
     private func setupTableView() {
         view.addSubview(listTableView)
-        listTableView.register(DetailsTableViewCell.self, forCellReuseIdentifier: DetailsTableViewCell.reuseId)
         listTableView.dataSource = self
         listTableView.delegate = self
+        listTableView.register(DetailsTableViewCell.self, forCellReuseIdentifier: DetailsTableViewCell.reuseId)
         listTableView.rowHeight = UITableView.automaticDimension
         listTableView.layer.cornerRadius = 12
         listTableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        setTableViewConstraints()
+    }
+    
+    private func setTableViewConstraints() {
         listTableView.translatesAutoresizingMaskIntoConstraints = false
         listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         listTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -70,9 +63,6 @@ class CryptoListViewController: UIViewController {
         searchController.searchBar.layer.cornerRadius = 12
         searchController.searchBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         searchController.searchBar.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.sizeToFit()
         navigationItem.searchController = searchController
     }
     
@@ -80,9 +70,11 @@ class CryptoListViewController: UIViewController {
         var navBar = UINavigationBar()
         let width = self.view.frame.width
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height: 44))
-        self.title = AppConstants.navigationTitleCoin.rawValue
         navBar.barTintColor = .white
         navBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.sizeToFit()
         self.view.addSubview(navBar)
     }
     
@@ -100,7 +92,7 @@ class CryptoListViewController: UIViewController {
     
     private func makeAPICall() {
         showLoader()
-        NetworkService.sharedInstance.getCryptoData { [weak self] result in
+        NetworkService.getCryptoData { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let successData):

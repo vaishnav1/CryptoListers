@@ -7,16 +7,9 @@
 
 import Foundation
 
-class NetworkService {
+struct NetworkService {
     
-    static let sharedInstance = NetworkService()
-    
-    private init() { }
-    
-    // MARK: - Network Calls
-    
-    func getCryptoData(completion: @escaping (Result<[DataResponseModel], ErrorMessage>) -> Void) {
-        
+    static func getCryptoData(completion: @escaping (Result<[DataResponseModel], ErrorMessage>) -> Void) {
         performRequest(endpoint: .getData) { result in
             switch result {
             case .success(let apiResponse):
@@ -29,7 +22,7 @@ class NetworkService {
     
     // MARK: - Private helper method
     
-    private func performRequest(endpoint: EndPoints, completion: @escaping(Result<[DataResponseModel], ErrorMessage>) -> Void) {
+    static func performRequest(endpoint: EndPoints, completion: @escaping(Result<[DataResponseModel], ErrorMessage>) -> Void) {
         URLSession.shared.dataTask(with: endpoint.url) { data, response, error in
             if let _ = error {
                 completion(.failure(.unableToComplete))

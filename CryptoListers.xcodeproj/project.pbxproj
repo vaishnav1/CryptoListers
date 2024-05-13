@@ -25,6 +25,14 @@
 		FE0F6D662BF218B00055A851 /* CryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D652BF218B00055A851 /* CryptoViewController.swift */; };
 		FE0F6D682BF218DE0055A851 /* CryptoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D482BEF6FD80055A851 /* CryptoListViewController.swift */; };
 		FE0F6D6B2BF221C90055A851 /* TableViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D6A2BF221C90055A851 /* TableViewAnimation.swift */; };
+		FE0F6D6C2BF23B850055A851 /* DataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D4C2BEF8B8A0055A851 /* DataResponseModel.swift */; };
+		FE0F6D6D2BF23B970055A851 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D582BF1CC200055A851 /* AppColors.swift */; };
+		FE0F6D6E2BF23BA00055A851 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D552BF0F50E0055A851 /* AppConstants.swift */; };
+		FE0F6D6F2BF23BA50055A851 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5C2BF1E7A60055A851 /* ErrorMessage.swift */; };
+		FE0F6D702BF23BAA0055A851 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D5A2BF1E5A00055A851 /* NetworkService.swift */; };
+		FE0F6D712BF23BAD0055A851 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D612BF1F0B20055A851 /* EndPoints.swift */; };
+		FE0F6D722BF23BB50055A851 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D532BF0B2F10055A851 /* DetailsTableViewCell.swift */; };
+		FE0F6D732BF23BBE0055A851 /* TableViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F6D6A2BF221C90055A851 /* TableViewAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -349,8 +357,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0F6D732BF23BBE0055A851 /* TableViewAnimation.swift in Sources */,
+				FE0F6D6C2BF23B850055A851 /* DataResponseModel.swift in Sources */,
+				FE0F6D6D2BF23B970055A851 /* AppColors.swift in Sources */,
 				FE0F6D682BF218DE0055A851 /* CryptoListViewController.swift in Sources */,
+				FE0F6D722BF23BB50055A851 /* DetailsTableViewCell.swift in Sources */,
 				FE0F6D662BF218B00055A851 /* CryptoViewController.swift in Sources */,
+				FE0F6D6F2BF23BA50055A851 /* ErrorMessage.swift in Sources */,
+				FE0F6D6E2BF23BA00055A851 /* AppConstants.swift in Sources */,
+				FE0F6D712BF23BAD0055A851 /* EndPoints.swift in Sources */,
+				FE0F6D702BF23BAA0055A851 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
